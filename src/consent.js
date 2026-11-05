@@ -5,9 +5,12 @@ import { createRecordKeys } from './keystore.js';
 export { createRecordKeys };
 
 export function signConsent(consent, privateKey) {
-  return crypto.createSign('RSA-SHA256').update(JSON.stringify(consent)).sign(privateKey, 'base64');
+  const data = Buffer.from(JSON.stringify(consent));
+  return crypto.sign(null, data, privateKey).toString('base64');
 }
 
 export function verifyConsent(consent, signature, publicKey) {
-  return crypto.createVerify('RSA-SHA256').update(JSON.stringify(consent)).verify(publicKey, signature, 'base64');
+  const data = Buffer.from(JSON.stringify(consent));
+  const sigBuf = Buffer.from(signature, 'base64');
+  return crypto.verify(null, data, publicKey, sigBuf);
 }
