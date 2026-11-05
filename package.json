@@ -1,0 +1,10 @@
+{
+  "name": "medivault-records",
+  "version": "1.0.0",
+  "description": "Demo patient-records service that still uses classical (quantum-vulnerable) cryptography",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": { "test": "node --test test/" },
+  "engines": { "node": ">=24" },
+  "license": "MIT"
+}
