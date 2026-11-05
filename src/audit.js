@@ -2,5 +2,5 @@
 import crypto from 'node:crypto';
 
 export function chainEntry(prevHash, event) {
-  return crypto.createHash('sha1').update(prevHash + JSON.stringify(event)).digest('hex');
+  return crypto.createHash('sha256').update(prevHash + JSON.stringify(event)).digest('hex');
 }
